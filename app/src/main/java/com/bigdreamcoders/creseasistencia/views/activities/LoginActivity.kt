@@ -7,6 +7,7 @@ import com.bigdreamcoders.creseasistencia.models.LoginPresenterImp
 import com.bigdreamcoders.creseasistencia.presenters.LoginPresenter
 import com.bigdreamcoders.creseasistencia.utils.Constants
 import com.bigdreamcoders.creseasistencia.views.views.LoginView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginView {
@@ -31,11 +32,11 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun loginEmptyId(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Snackbar.make(cl_root_login_activity, resources.getString(R.string.id_empty), Snackbar.LENGTH_LONG).show()
     }
 
     override fun loginEmptyPassword(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Snackbar.make(cl_root_login_activity, resources.getString(R.string.password_empty), Snackbar.LENGTH_LONG).show()
     }
 
     override fun loginSuccess() {

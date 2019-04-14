@@ -5,4 +5,9 @@
     <string name="name2_text">Seguridad Electrónica</string>
     <string name="name1_text">CRESE</string>
     <string name="login_text">Login</string>
+
+
+    <!--Code Strings-->
+    <string name="id_empty">Email or Username empty</string>
+    <string name="password_empty">Password empty</string>
 </resources>
