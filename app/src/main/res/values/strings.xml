@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Crese Asistencia</string>
+    <string name="login_id_hint"> \u0020 \u0020Username or Email</string>
+    <string name="login_password_hint"> \u0020 \u0020Password</string>
+    <string name="name2_text">Seguridad Electrónica</string>
+    <string name="name1_text">CRESE</string>
+    <string name="login_text">Login</string>
 </resources>
