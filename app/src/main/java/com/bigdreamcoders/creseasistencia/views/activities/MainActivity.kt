@@ -1,7 +1,8 @@
-package com.bigdreamcoders.creseasistencia
+package com.bigdreamcoders.creseasistencia.views.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bigdreamcoders.creseasistencia.R
 
 class MainActivity : AppCompatActivity() {
 
