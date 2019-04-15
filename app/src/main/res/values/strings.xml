@@ -14,4 +14,9 @@
     <string name="forgot_your_password_text">Forgot your\npassword?</string>
     <string name="don_t_have_an_account_text">Don\'t have\nan account?</string>
     <string name="keep_session_active_text">Keep session active?</string>
+    <string name="register_text">Register</string>
+    <string name="username_hint">\u0020\u0020Username</string>
+    <string name="email_hint">\u0020\u0020Email</string>
+    <string name="repeat_password_hint">\u0020Repeat Password</string>
+    <string name="have_an_account_login_text">Have an account? Login</string>
 </resources>

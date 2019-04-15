@@ -62,6 +62,8 @@
             android:autofillHints="@string/login_password_hint"
             android:background="@drawable/custom_edit_text"
             android:drawableStart="@drawable/custom_icon_rec_pass"
+            app:drawable_hide="@drawable/custom_toggle_invisible"
+            app:drawable_show="@drawable/custom_toggle_visible"
             android:ems="10"
             android:hint="@string/login_password_hint"
             android:inputType="textPassword"
