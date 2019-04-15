@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Crese Asistencia</string>
-    <string name="login_id_hint"> \u0020 \u0020Username or Email</string>
-    <string name="login_password_hint"> \u0020 \u0020Password</string>
+    <string name="login_id_hint">\u0020\u0020Username or Email</string>
+    <string name="login_password_hint">\u0020Password</string>
     <string name="name2_text">Seguridad Electrónica</string>
     <string name="name1_text">CRESE</string>
     <string name="login_text">Login</string>
@@ -10,4 +10,8 @@
     <!--Code Strings-->
     <string name="id_empty">Email or Username empty</string>
     <string name="password_empty">Password empty</string>
+    <string name="crese_logo_description">CRESE Logo</string>
+    <string name="forgot_your_password_text">Forgot your\npassword?</string>
+    <string name="don_t_have_an_account_text">Don\'t have\nan account?</string>
+    <string name="keep_session_active_text">Keep session active?</string>
 </resources>
