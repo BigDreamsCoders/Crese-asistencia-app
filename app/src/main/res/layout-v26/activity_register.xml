@@ -21,13 +21,12 @@
 
     <EditText
         android:id="@+id/et_username_register_activity"
-        android:layout_width="255dp"
+        android:layout_width="254dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="41dp"
         android:autofillHints="@string/username_hint"
         android:background="@drawable/custom_edit_text"
         android:drawableStart="@drawable/custom_icon_rec_user"
-        android:drawableLeft="@drawable/custom_icon_rec_user"
         android:ems="10"
         android:hint="@string/username_hint"
         android:inputType="text"
@@ -44,7 +43,6 @@
         android:autofillHints="@string/email_hint"
         android:background="@drawable/custom_edit_text"
         android:drawableStart="@drawable/custom_icon_rec_email"
-        android:drawableLeft="@drawable/custom_icon_rec_email"
         android:ems="10"
         android:hint="@string/email_hint"
         android:inputType="textEmailAddress"
@@ -60,7 +58,6 @@
         android:autofillHints="@string/login_password_hint"
         android:background="@drawable/custom_edit_text"
         android:drawableStart="@drawable/custom_icon_rec_pass"
-        android:drawableLeft="@drawable/custom_icon_rec_pass"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="@string/login_password_hint"
@@ -77,9 +74,9 @@
         android:layout_width="255dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:autofillHints="@string/repeat_password_hint"
         android:background="@drawable/custom_edit_text"
         android:drawableStart="@drawable/custom_icon_rec_pass"
-        android:drawableLeft="@drawable/custom_icon_rec_pass"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="@string/repeat_password_hint"
@@ -89,8 +86,7 @@
         app:drawable_show="@drawable/custom_toggle_visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_register_activity"
-        android:autofillHints="@string/repeat_password_hint"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_password_register_activity" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_register_action_register_activity"
@@ -119,10 +115,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="84dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:text="@string/have_an_account_login_text"
             android:textColor="@color/colorPrimary"
             android:textSize="14sp"

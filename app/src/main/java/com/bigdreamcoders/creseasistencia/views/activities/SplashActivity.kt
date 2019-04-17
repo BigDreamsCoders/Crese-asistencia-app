@@ -7,35 +7,49 @@ import android.os.Handler
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.bigdreamcoders.creseasistencia.R
-import com.bigdreamcoders.creseasistencia.services.NetworkService.models.login.Login
+import com.bigdreamcoders.creseasistencia.models.SplashPresenterImp
+import com.bigdreamcoders.creseasistencia.presenters.SplashPresenter
 import com.bigdreamcoders.creseasistencia.utils.Constants
+import com.bigdreamcoders.creseasistencia.views.views.SplashView
 import spencerstudios.com.bungeelib.Bungee
 
 const val TIME_OUT = 2000
 
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity(), SplashView {
+
+    private lateinit var splashPresenter: SplashPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        splashPresenter = SplashPresenterImp(this)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
         setContentView(R.layout.activity_splash)
         Handler().postDelayed({
-            val intent=if(checkLog() and checkPref()){
-                Intent(this@SplashActivity, MainActivity::class.java)
-            }else{
-                Intent(this@SplashActivity, LoginActivity::class.java)
-            }
-            startActivity(intent)
-            Bungee.card(this@SplashActivity)
-            finish()
+            splashPresenter.decideNextActivity(checkLog(), checkPref())
         }, TIME_OUT.toLong())
     }
 
-    private fun checkPref():Boolean=getSharedPreferences(Constants.SP_NAME, Context.MODE_PRIVATE).getBoolean(Constants.SP_STAY_ACTIVE, false)
+    private fun checkPref(): Boolean =
+        getSharedPreferences(
+            Constants.SP_NAME,
+            Context.MODE_PRIVATE
+        ).getBoolean(Constants.SP_STAY_ACTIVE, false)
 
-    private fun checkLog():Boolean{
-        return getSharedPreferences(Constants.SP_NAME, Context.MODE_PRIVATE)
+    private fun checkLog(): Boolean =
+        getSharedPreferences(Constants.SP_NAME, Context.MODE_PRIVATE)
             .contains(Constants.SP_TOKEN)
+
+    override fun openNextActivity(flag:Boolean) {
+        if(flag){
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+        }else{
+            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+        }
+        Bungee.card(this@SplashActivity)
+        finish()
     }
 }

@@ -9,7 +9,10 @@
 
     <!--Code Strings-->
     <string name="id_empty">Email or Username empty</string>
+    <string name="username_empty">Username empty</string>
+    <string name="email_empty">Email empty</string>
     <string name="password_empty">Password empty</string>
+    <string name="password_not_match">Password don\'t match</string>
     <string name="crese_logo_description">CRESE Logo</string>
     <string name="forgot_your_password_text">Forgot your\npassword?</string>
     <string name="don_t_have_an_account_text">Don\'t have\nan account?</string>
@@ -19,4 +22,15 @@
     <string name="email_hint">\u0020\u0020Email</string>
     <string name="repeat_password_hint">\u0020Repeat Password</string>
     <string name="have_an_account_login_text">Have an account? Login</string>
+    <string name="has_special_char">The username cannot have "." or "@"</string>
+    <string name="email_valid">Email most be valid</string>
+    <string name="password_length">Password must have at least 8 characters</string>
+    <string name="server_error">An error happen, try later</string>
+    <string name="social_network_drawer">Social Network</string>
+    <string name="notification_drawer">Notification</string>
+    <string name="account_drawer">Account</string>
+    <string name="sign_out_drawer">Sign out</string>
+    <string name="electronic_materials_text">Electronic Materials</string>
+    <string name="dashboard_fragment_name">DashBoard</string>
+    <string name="dashboard_drawer">DashBoard</string>
 </resources>

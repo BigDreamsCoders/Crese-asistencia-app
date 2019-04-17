@@ -1,11 +1,9 @@
 package com.bigdreamcoders.creseasistencia.views.activities
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.bigdreamcoders.creseasistencia.R
@@ -35,11 +33,11 @@ class LoginActivity : AppCompatActivity(), LoginView {
                 (et_password_login_activity as EditText).text.toString().trim()
             )
         }
-        tv_register_login_activity.setOnClickListener{
+        tv_register_login_activity.setOnClickListener {
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
             Bungee.slideLeft(this@LoginActivity)
         }
-        tv_forgot_password_login_activity.setOnClickListener{
+        tv_forgot_password_login_activity.setOnClickListener {
             startActivity(Intent(this@LoginActivity, ForgotPasswordActivity::class.java))
             Bungee.slideRight(this@LoginActivity)
         }
@@ -50,11 +48,19 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun loginEmptyId() {
-        Snackbar.make(cl_root_login_activity, resources.getString(R.string.id_empty), Snackbar.LENGTH_LONG).show()
+        Snackbar.make(
+            cl_root_login_activity,
+            resources.getString(R.string.id_empty),
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 
     override fun loginEmptyPassword() {
-        Snackbar.make(cl_root_login_activity, resources.getString(R.string.password_empty), Snackbar.LENGTH_LONG).show()
+        Snackbar.make(
+            cl_root_login_activity,
+            resources.getString(R.string.password_empty),
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 
     override fun loginSuccess() {
@@ -64,14 +70,14 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun loginError(message: String) {
-        cl_login_options_login_activity.visibility=View.VISIBLE
-        pb_login_activity.visibility=View.GONE
+        cl_login_options_login_activity.visibility = View.VISIBLE
+        pb_login_activity.visibility = View.GONE
         Snackbar.make(cl_root_login_activity, message, Snackbar.LENGTH_LONG).show()
     }
 
     override fun loginPerform() {
-        cl_login_options_login_activity.visibility=View.GONE
-        pb_login_activity.visibility=View.VISIBLE
+        cl_login_options_login_activity.visibility = View.GONE
+        pb_login_activity.visibility = View.VISIBLE
     }
 
     override fun loginSaveToken(token: String?) {
@@ -83,6 +89,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     override fun loginSavePreference() {
         getSharedPreferences(Constants.SP_NAME, Context.MODE_PRIVATE)
             .edit()
-            .putBoolean(Constants.SP_STAY_ACTIVE, cb_prevail_session_login_activity.isChecked).apply()
+            .putBoolean(Constants.SP_STAY_ACTIVE, cb_prevail_session_login_activity.isChecked)
+            .apply()
     }
 }

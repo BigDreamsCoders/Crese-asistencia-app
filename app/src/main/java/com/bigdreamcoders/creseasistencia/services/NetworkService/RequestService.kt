@@ -3,6 +3,7 @@ package com.bigdreamcoders.creseasistencia.services.NetworkService
 import com.bigdreamcoders.creseasistencia.services.NetworkService.models.login.Login
 import com.bigdreamcoders.creseasistencia.services.NetworkService.models.LoginAdapter
 import com.bigdreamcoders.creseasistencia.services.NetworkService.models.login.LoginResponse
+import com.bigdreamcoders.creseasistencia.services.NetworkService.models.register.Register
 import com.google.gson.GsonBuilder
 import io.reactivex.Observable
 import retrofit2.Response
@@ -17,12 +18,23 @@ interface RequestService {
     @POST("user/login")
     fun login(@Body log: Login): Observable<Response<LoginResponse>>
 
+    @POST("user")
+    fun register(@Body register:Register):Observable<Response<Any>>
+
     companion object {
         val gsonLogin:GsonBuilder=GsonBuilder().registerTypeAdapter(Login::class.java, LoginAdapter())
         fun createLogin(): RequestService {
             val retrofit = Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gsonLogin.create()))
+                .baseUrl("https://crese-asistencia.herokuapp.com/API/v1/")
+                .build()
+            return retrofit.create(RequestService::class.java)
+        }
+        fun create():RequestService{
+            val retrofit = Retrofit.Builder()
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl("https://crese-asistencia.herokuapp.com/API/v1/")
                 .build()
             return retrofit.create(RequestService::class.java)

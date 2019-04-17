@@ -3,6 +3,8 @@ package com.bigdreamcoders.creseasistencia.utils
 import java.util.regex.Pattern.compile
 
 object Constants {
+    private val usernameAtRegex=compile("^((?!@).)*\$")
+    private val usernameDotComRegex=compile("^((?!\\.com).)*\$")
     /**
      * return a regex to verify if is and email or not
     * */
@@ -24,6 +26,20 @@ object Constants {
     * */
     fun isEmailOrUsername(id:String):Boolean{
         return id.isEmail()
+    }
+
+    private fun String.hasAtChar():Boolean{
+        return usernameAtRegex.matcher(this).matches()
+    }
+    fun hasAt(username:String):Boolean{
+        return !username.hasAtChar()
+    }
+
+    private fun String.hasDotComString():Boolean{
+        return usernameDotComRegex.matcher(this).matches()
+    }
+    fun hasDotCom(username:String):Boolean{
+        return !username.hasDotComString()
     }
 
     const val SP_NAME:String="PREFERENCES"
