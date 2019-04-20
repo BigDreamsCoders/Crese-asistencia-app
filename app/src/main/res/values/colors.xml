@@ -2,8 +2,10 @@
 <resources>
     <color name="colorPrimary">#0d46a0</color>
     <color name="colorPrimaryDark">#002171</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#000045</color>
 
-    <color name="loginEditTextBackground">#e2f0e8</color>
+    <color name="loginEditTextBackground">#2e2e2e</color>
     <color name="loginIconBackground">#98aca1</color>
+    <color name="loginEditTextBackgroundDark">#2e2e2e</color>
+    <color name="loginIconBackgroundDark">#98ACA1</color>
 </resources>

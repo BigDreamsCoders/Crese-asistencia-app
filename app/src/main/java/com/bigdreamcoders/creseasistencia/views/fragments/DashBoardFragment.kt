@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bigdreamcoders.creseasistencia.R
+import com.bigdreamcoders.creseasistencia.utils.Constants
 import com.smarteist.autoimageslider.DefaultSliderView
 import com.smarteist.autoimageslider.IndicatorAnimations
+import kotlinx.android.synthetic.main.dashboard.*
 import kotlinx.android.synthetic.main.dashboard.view.*
 
 class DashBoardFragment : Fragment() {
@@ -31,6 +33,7 @@ class DashBoardFragment : Fragment() {
 
     interface InnerDashBoardFun {
         fun setSlideViews(): ArrayList<DefaultSliderView>
+        fun changeFragment(fragment:Fragment)
     }
 
     private fun bindViews(view: View) {
@@ -39,9 +42,21 @@ class DashBoardFragment : Fragment() {
             scrollTimeInSec = 1
         }
         innerDashBoardFun?.setSlideViews()?.forEach {
-            Log.d("BIND", it.toString())
             view.image_slider_dashboard.addSliderView(it)
         }
+        view.iv_pdf_dashboard.setOnClickListener{
+            categoryFragment(Constants.MATERIAL_TYPE_MANUAL)
+        }
+        view.iv_video_dashboard.setOnClickListener{
+            categoryFragment(Constants.MATERIAL_TYPE_VIDEO)
+        }
+        view.iv_questions_dashboard.setOnClickListener{
+            categoryFragment(Constants.MATERIAL_TYPE_QUESTION)
+        }
+    }
+
+    private fun categoryFragment(type:String){
+        innerDashBoardFun?.changeFragment(CategoryFragment.newInstance(type))
     }
 
     override fun onDetach() {

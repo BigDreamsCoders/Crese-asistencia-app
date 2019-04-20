@@ -44,7 +44,6 @@ class LoginPresenterImp(private val mLoginView: LoginView) : LoginPresenter {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
                         run {
-                            Log.d("FAIL", it.code().toString())
                             when {
                                 it.code() == 200 -> {
                                     mLoginView.loginSuccess()
@@ -58,7 +57,6 @@ class LoginPresenterImp(private val mLoginView: LoginView) : LoginPresenter {
                         }
                     }, {
                         run {
-                            Log.d("FAIL", "XXXXXXXXXX")
                             if (it is SocketTimeoutException || it is UnknownHostException) {
                                 mLoginView.loginError("Check your internet connection")
                             } else {

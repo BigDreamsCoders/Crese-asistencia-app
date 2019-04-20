@@ -6,10 +6,18 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="loginEditTextBackground">@color/loginEditTextBackground</item>
+        <item name="loginIconBackground">@color/loginIconBackground</item>
     </style>
+    
+    <style name="DarkTheme" parent="Base.AppTheme.Dark"/>
 
-    <style name="AppTheme.ProgressAcent">
-        <item name="colorAccent">@color/colorPrimary</item>
+    <style name="Base.AppTheme.Dark" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="loginEditTextBackground">@color/loginEditTextBackground</item>
+        <item name="loginIconBackground">@color/loginIconBackground</item>
     </style>
 
 </resources>

@@ -45,4 +45,32 @@ object Constants {
     const val SP_NAME:String="PREFERENCES"
     const val SP_TOKEN:String="TOKEN"
     const val SP_STAY_ACTIVE:String="ACTIVE"
+
+    const val SI_TITLE="FRAGMENT_TITLE"
+    const val SI_LIST_MANUALS="MANUALS LIST"
+    const val SI_LIST_VIDEOS="VIDEOS LIST"
+    const val SI_PDF_LOAD="PDF"
+
+    const val MANUAL_SPINNER_ALPHA="Alphabetic sort"
+    const val MANUAL_SPINNER_DATE="Date sort"
+    const val MANUAL_SPINNER_TYPE="Type sort"
+
+    const val MATERIAL_TYPE_MANUAL="MANUAL"
+    const val MATERIAL_TYPE_VIDEO="VIDEO"
+    const val MATERIAL_TYPE_QUESTION="QUESTIONS"
+
+    const val CATEGORY_CCTV="cctv"
+    const val CATEGORY_CAMARAS="cámara wifi"
+    const val CATEGORY_GPS="gps"
+    const val CATEGORY_AC="control de acceso"
+
+    const val REQUEST_QUERY_SEARCH="search"
+    const val REQUEST_QUERY_CATEGORY="category"
+
+    const val MATERIAL_TYPE_KEY="MATERIAL TYPE"
+    const val MATERIAL_CATEGORY_KEY="MATERIAL CATEGORY"
+
+    const val PDF_ACTION_SHARE="Share"
+    const val PDF_ACTION_OPEN="Open"
+
 }

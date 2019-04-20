@@ -33,4 +33,22 @@
     <string name="electronic_materials_text">Electronic Materials</string>
     <string name="dashboard_fragment_name">DashBoard</string>
     <string name="dashboard_drawer">DashBoard</string>
+    <string name="pdf_dashboard_description">PDF dashboard</string>
+    <string name="video_dashboard_description">Video dashboard</string>
+    <string name="questions_dashboard_description">Questions dashboard</string>
+    <string name="what_are_you_searching_hint">What are you searching?</string>
+    <string name="documents_found_text">Documents found:</string>
+    <string name="_0_text">0</string>
+    <string name="pdf_image_description">PDF image</string>
+    <string name="cctv_category_name">CCTV</string>
+    <string name="cameras_category_name">Cameras</string>
+    <string name="gps_category_name">GPS</string>
+    <string name="access_control_category_name">Access Control</string>
+    <string name="the_following_items_are_available_text">The following items are available</string>
+    <string name="videos_found_text">Videos found</string>
+    <string name="download_info">Downloading</string>
+    <string name="share_intent_msg">Checkout this PDF on </string>
+    <string name="logout_msg">Session expired</string>
+    <string name="timeout_msg">Timeout, try again later</string>
+    <string name="some_err_msg">An error occurred, try again</string>
 </resources>
