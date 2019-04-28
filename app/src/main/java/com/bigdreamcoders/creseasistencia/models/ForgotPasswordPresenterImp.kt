@@ -29,9 +29,8 @@ class ForgotPasswordPresenterImp(val view:ForgotPasswordView):ForgotPasswordPres
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     view.done()
-                    Log.d("Response", it.code().toString())
                     when(it.code()){
-                        200->view.successful(it?.body()?.message?:"")
+                        200->view.successful()
                         404->view.badCredentials()
                     }
                 }, {

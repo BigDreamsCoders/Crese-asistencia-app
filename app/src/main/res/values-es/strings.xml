@@ -57,4 +57,6 @@
     <string name="camera_title">Cámaras</string>
     <string name="ingress_your_email_and_you_will_receive_a_mail_to_recover_your_password_text">Ingresa tu correo electrónico y recibirás un correo para recuperar tu contraseña</string>
     <string name="recover_password">Recuperar</string>
+    <string name="bad_email">Correo erroneo</string>
+    <string name="password_sucessful">Revisa tu correo para instrucciones adicionales</string>
 </resources>

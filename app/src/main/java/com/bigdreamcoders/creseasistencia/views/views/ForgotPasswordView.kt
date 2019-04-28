@@ -7,6 +7,6 @@ interface ForgotPasswordView {
     fun timeout()
     fun errorH()
     fun done()
-    fun successful(msg:String)
+    fun successful()
 
 }

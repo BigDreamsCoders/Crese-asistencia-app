@@ -79,5 +79,6 @@
     <string name="ingress_your_email_and_you_will_receive_a_mail_to_recover_your_password_text">Ingress your email and you will receive a mail to recover your password</string>
     <string name="recover_password">Recover</string>
     <string name="bad_email">Wrong email</string>
+    <string name="password_sucessful">Check your email for further instructions</string>
 
 </resources>

@@ -19,7 +19,7 @@ import retrofit2.http.*
 
 interface RequestService {
 
-    @POST("user/forgot-password")
+    @GET("user/forgot-password")
     fun forgot(@Query(Constants.REQUEST_QUERY_EMAIL) email:String): Observable<Response<ForgotResponse>>
 
     @POST("user/login")

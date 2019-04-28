@@ -62,7 +62,7 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
         pb_forgot_activity.visibility=View.GONE
     }
 
-    override fun successful(msg: String) {
-        Snackbar.make(cl_forgot_activity, msg, Snackbar.LENGTH_LONG).show()
+    override fun successful() {
+        Snackbar.make(cl_forgot_activity, resources.getText(R.string.password_sucessful), Snackbar.LENGTH_LONG).show()
     }
 }
