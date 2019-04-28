@@ -1,27 +1,23 @@
 package com.bigdreamcoders.creseasistencia.views.fragments
 
 import android.app.AlertDialog
-import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bigdreamcoders.creseasistencia.R
 import com.bigdreamcoders.creseasistencia.models.ManualsPresenterImp
-import com.bigdreamcoders.creseasistencia.services.NetworkService.models.manuals.Manuals
+import com.bigdreamcoders.creseasistencia.services.networkService.models.manuals.Manuals
 import com.bigdreamcoders.creseasistencia.utils.Constants
 import com.bigdreamcoders.creseasistencia.views.adapter.ManualsAdapter
 import com.bigdreamcoders.creseasistencia.views.views.ManualsView
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.manuals.view.*
+import java.text.SimpleDateFormat
 
 class ManualsFragment : Fragment(), ManualsView {
 
@@ -64,8 +60,11 @@ class ManualsFragment : Fragment(), ManualsView {
             category = getString(Constants.MATERIAL_CATEGORY_KEY, "")
             list =
                 getParcelableArrayList(Constants.SI_LIST_MANUALS) ?: ArrayList()
-            adapter.updateList(list)
+            filter=getInt(Constants.SI_FILTER, -1)
+            adapter.updateList(sortList(list))
             view.tv_manual_count_manuals.text = list.size.toString()
+        }else{
+            imp.fetchManuals(innerFunctions?.getToken()?:"", ".*", category)
         }
         return view
     }
@@ -75,6 +74,7 @@ class ManualsFragment : Fragment(), ManualsView {
         outState.putString(Constants.MATERIAL_TYPE_KEY, type)
         outState.putString(Constants.MATERIAL_CATEGORY_KEY, category)
         outState.putParcelableArrayList(Constants.SI_LIST_MANUALS, list)
+        outState.putInt(Constants.SI_FILTER, filter)
     }
 
     private fun bind(view: View) {
@@ -93,17 +93,19 @@ class ManualsFragment : Fragment(), ManualsView {
                             },
                             category
                         )
-                        return@setOnTouchListener true
+                        event.action = MotionEvent.ACTION_CANCEL
+                        hideKeyboard()
                     }
                     if (event.rawX <= (view.et_search_manuals.compoundDrawables[left].bounds.width())) {
                         showDialog()
-                        return@setOnTouchListener true
+                        event.action = MotionEvent.ACTION_CANCEL
+                        hideKeyboard()
                     }
                 }
                 return@setOnTouchListener false
             }
         }
-        adapter = ManualsAdapter { manual: Manuals -> openPDF(manual) }
+        adapter = ManualsAdapter(list) { manual: Manuals -> openPDF(manual) }
         view.rv_manuals.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = this@ManualsFragment.adapter
@@ -117,15 +119,15 @@ class ManualsFragment : Fragment(), ManualsView {
 
     interface InnerFunctions {
         fun getToken(): String
-        fun changeFragment(fragment: Fragment)
         fun logout()
-        fun error(msg:Int)
-        fun downloadPDF(manual:Manuals)
+        fun error(msg: Int)
+        fun hideKeyboard()
+        fun downloadPDF(manual: Manuals)
     }
 
     override fun updateList(list: ArrayList<Manuals>) {
         this@ManualsFragment.list = list
-        adapter.updateList(list)
+        adapter.updateList(sortList(list))
     }
 
     override fun updateItemCount(count: Int) {
@@ -137,7 +139,7 @@ class ManualsFragment : Fragment(), ManualsView {
         view?.rv_manuals?.visibility = View.GONE
     }
 
-    override fun error(msg:Int) {
+    override fun error(msg: Int) {
         innerFunctions?.error(msg)
     }
 
@@ -154,12 +156,13 @@ class ManualsFragment : Fragment(), ManualsView {
         val dialog = AlertDialog.Builder(activity).apply {
             setItems(Array(3) {
                 when (it) {
-                    0 -> Constants.MANUAL_SPINNER_ALPHA
-                    1 -> Constants.MANUAL_SPINNER_DATE
-                    else -> Constants.MANUAL_SPINNER_TYPE
+                    0 -> resources.getString(Constants.MANUAL_SPINNER_ALPHA)
+                    1 -> resources.getString(Constants.MANUAL_SPINNER_DATE)
+                    else -> resources.getString(Constants.MANUAL_SPINNER_TYPE)
                 }
             }) { dialog, witch ->
                 filter = witch
+                adapter.updateList(sortList(list))
                 dialog.dismiss()
             }
         }
@@ -171,8 +174,8 @@ class ManualsFragment : Fragment(), ManualsView {
             setTitle(manual.name)
             setItems(Array(2) {
                 when (it) {
-                    0 -> Constants.PDF_ACTION_SHARE
-                    else -> Constants.PDF_ACTION_OPEN
+                    0 -> resources.getString(Constants.PDF_ACTION_SHARE)
+                    else -> resources.getString(Constants.PDF_ACTION_OPEN)
                 }
             }) { dialog, witch ->
                 when (witch) {
@@ -187,14 +190,44 @@ class ManualsFragment : Fragment(), ManualsView {
         dialog.show()
     }
 
+    private fun sortList(list:ArrayList<Manuals>):ArrayList<Manuals>{
+        return when(filter){
+            -1->list
+            0->
+                return list.sortedBy {
+                    it.name
+                }.toCollection(ArrayList())
+            1->
+                return list.sortedBy {
+                    run{
+                        return@sortedBy SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                            .parse(it.dateCreated)
+                            .time
+                    }
+                }.toCollection(ArrayList())
+            else->
+                return list.sortedBy {
+                    it.sourceType
+                }.toCollection(ArrayList())
+
+        }
+    }
+
     private fun pdfIntent(manual: Manuals) {
         val intent = Intent()
         intent.apply {
             action = Intent.ACTION_SEND
             type = "text/plain"
-            putExtra(Intent.EXTRA_TEXT, "${activity?.resources?.getString(R.string.share_intent_msg)} ${manual.URL}")
+            putExtra(
+                Intent.EXTRA_TEXT,
+                "${activity?.resources?.getString(R.string.share_pdf_intent_msg)} -> ${manual.URL}"
+            )
         }
         activity?.startActivity(intent)
+    }
+
+    override fun hideKeyboard() {
+        innerFunctions?.hideKeyboard()
     }
 
     override fun onDetach() {

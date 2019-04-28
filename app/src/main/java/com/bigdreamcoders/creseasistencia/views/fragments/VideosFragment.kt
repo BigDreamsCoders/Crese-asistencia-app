@@ -2,7 +2,9 @@ package com.bigdreamcoders.creseasistencia.views.fragments
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -11,12 +13,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bigdreamcoders.creseasistencia.R
 import com.bigdreamcoders.creseasistencia.models.VideosPresenterImp
-import com.bigdreamcoders.creseasistencia.services.NetworkService.models.videos.Videos
+import com.bigdreamcoders.creseasistencia.services.networkService.models.manuals.Manuals
+import com.bigdreamcoders.creseasistencia.services.networkService.models.videos.Videos
 import com.bigdreamcoders.creseasistencia.utils.Constants
 import com.bigdreamcoders.creseasistencia.views.adapter.VideosAdapter
 import com.bigdreamcoders.creseasistencia.views.views.VideosView
 import kotlinx.android.synthetic.main.manuals.view.et_search_manuals
 import kotlinx.android.synthetic.main.videos.view.*
+import java.text.SimpleDateFormat
 
 class VideosFragment : Fragment(), VideosView {
 
@@ -58,9 +62,12 @@ class VideosFragment : Fragment(), VideosView {
             type = getString(Constants.MATERIAL_TYPE_KEY, "")
             category = getString(Constants.MATERIAL_CATEGORY_KEY, "")
             list =
-                getParcelableArrayList(Constants.SI_LIST_MANUALS) ?: ArrayList()
-            adapter.updateList(list)
+                getParcelableArrayList(Constants.SI_LIST_VIDEOS) ?: ArrayList()
+            filter=getInt(Constants.SI_FILTER, -1)
+            adapter.updateList(sortList(list))
             view.tv_video_count_video.text = list.size.toString()
+        }else{
+            imp.fetchVideos(innerFunctions?.getToken()?:"", ".*", category)
         }
         return view
     }
@@ -69,7 +76,8 @@ class VideosFragment : Fragment(), VideosView {
         super.onSaveInstanceState(outState)
         outState.putString(Constants.MATERIAL_TYPE_KEY, type)
         outState.putString(Constants.MATERIAL_CATEGORY_KEY, category)
-        outState.putParcelableArrayList(Constants.SI_LIST_MANUALS, list)
+        outState.putParcelableArrayList(Constants.SI_LIST_VIDEOS, list)
+        outState.putInt(Constants.SI_FILTER, filter)
     }
 
     private fun bind(view: View) {
@@ -79,10 +87,6 @@ class VideosFragment : Fragment(), VideosView {
                 val right = 2
                 if (event.action == MotionEvent.ACTION_UP) {
                     if (event.rawX >= (view.et_search_manuals.right - view.et_search_manuals.compoundDrawables[right].bounds.width())) {
-                        showDialog()
-                        return@setOnTouchListener true
-                    }
-                    if (event.rawX <= (view.et_search_manuals.compoundDrawables[left].bounds.width())) {
                         imp.fetchVideos(
                             innerFunctions?.getToken() ?: "",
                             if (view.et_search_manuals.text.trim().toString().isNotEmpty()) {
@@ -92,13 +96,19 @@ class VideosFragment : Fragment(), VideosView {
                             },
                             category
                         )
-                        return@setOnTouchListener true
+                        event.action=MotionEvent.ACTION_CANCEL
+                        hideKeyboard()
+                    }
+                    if (event.rawX <= (view.et_search_manuals.compoundDrawables[left].bounds.width())) {
+                        showDialog()
+                        event.action=MotionEvent.ACTION_CANCEL
+                        hideKeyboard()
                     }
                 }
                 return@setOnTouchListener false
             }
         }
-        adapter = VideosAdapter()
+        adapter = VideosAdapter{video:Videos->showDialogVideo(video)}
         view.rv_videos.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = this@VideosFragment.adapter
@@ -110,30 +120,17 @@ class VideosFragment : Fragment(), VideosView {
         fun getToken(): String
         fun logout()
         fun error(msg:Int)
+        fun hideKeyboard()
+        fun openVideo(url:String)
     }
 
     override fun updateList(list: ArrayList<Videos>) {
-        adapter.updateList(list)
+        this@VideosFragment.list=list
+        adapter.updateList(sortList(list))
     }
 
     override fun updateItemCount(count: Int) {
         view?.tv_video_count_video?.text = count.toString()
-    }
-
-    private fun showDialog() {
-        val dialog = AlertDialog.Builder(activity).apply {
-            setItems(Array(3) {
-                when (it) {
-                    0 -> Constants.MANUAL_SPINNER_ALPHA
-                    1 -> Constants.MANUAL_SPINNER_DATE
-                    else -> Constants.MANUAL_SPINNER_TYPE
-                }
-            }) { dialog, witch ->
-                filter = witch
-                dialog.dismiss()
-            }
-        }
-        dialog.show()
     }
 
     override fun logout() {
@@ -152,6 +149,84 @@ class VideosFragment : Fragment(), VideosView {
     override fun finishFetch() {
         view?.rv_videos?.visibility=View.VISIBLE
         view?.pb_videos?.visibility=View.GONE
+    }
+
+    override fun hideKeyboard() {
+        innerFunctions?.hideKeyboard()
+    }
+
+    private fun showDialog() {
+        val dialog = AlertDialog.Builder(activity).apply {
+            setItems(Array(3) {
+                when (it) {
+                    0 -> resources.getString(Constants.MANUAL_SPINNER_ALPHA)
+                    1 -> resources.getString(Constants.MANUAL_SPINNER_DATE)
+                    else -> resources.getString(Constants.MANUAL_SPINNER_TYPE)
+                }
+            }) { dialog, witch ->
+                filter = witch
+                adapter.updateList(sortList(list))
+                dialog.dismiss()
+            }
+        }
+        dialog.show()
+    }
+
+    private fun showDialogVideo(video:Videos){
+        val dialog = AlertDialog.Builder(activity).apply {
+            setTitle(video.name)
+            setItems(Array(2) {
+                when (it) {
+                    0 -> resources.getString(Constants.VIDEO_ACTION_SHARE)
+                    else -> resources.getString(Constants.VIDEO_ACTION_OPEN)
+                }
+            }) { dialog, witch ->
+                when (witch) {
+                    0 -> videoIntent(video)
+                    else -> {
+                        openVideo(video)
+                    }
+                }
+                dialog.dismiss()
+            }
+        }
+        dialog.show()
+    }
+
+    private fun sortList(list:ArrayList<Videos>):ArrayList<Videos>{
+        return when(filter){
+            -1->list
+            0->
+                return list.sortedBy {
+                    it.name
+                }.toCollection(ArrayList())
+            1->
+                return list.sortedBy {
+                    run{
+                        return@sortedBy SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                            .parse(it.dateCreated)
+                            .time
+                    }
+                }.toCollection(ArrayList())
+            else->
+                return list.sortedBy {
+                    it.sourceType
+                }.toCollection(ArrayList())
+        }
+    }
+
+    private fun videoIntent(video:Videos){
+        val intent = Intent()
+        intent.apply {
+            action = Intent.ACTION_SEND
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, "${activity?.resources?.getString(R.string.share_video_intent_msg)} -> ${video.URL}")
+        }
+        activity?.startActivity(intent)
+    }
+
+    private fun openVideo(video:Videos){
+        innerFunctions?.openVideo(video.URL)
     }
 
     override fun onDetach() {

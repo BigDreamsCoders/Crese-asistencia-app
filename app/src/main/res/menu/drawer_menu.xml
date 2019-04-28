@@ -2,18 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/dash_board_drawer"
-            android:title="@string/dashboard_drawer"
-            />
-        <item
-            android:id="@+id/social_network_drawer"
-            android:title="@string/social_network_drawer" />
-        <item
-            android:id="@+id/notifications_drawer"
-            android:title="@string/notification_drawer" />
-        <item
-            android:id="@+id/account_drawer"
-            android:title="@string/account_drawer" />
+            android:id="@+id/settings"
+            android:title="@string/setting_drawer" />
         <item
             android:id="@+id/session_drawer"
             android:title="@string/sign_out_drawer" />

@@ -3,21 +3,67 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="themeName">normal</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorNavigation">@color/colorPrimary</item>
+        <item name="customIV">@drawable/custom_image_view_border</item>
+        <item name="PDF">@drawable/dashboard_pdf</item>
+        <item name="PDFCardview">@drawable/cardview_pdf</item>
+        <item name="video">@drawable/cardview_video</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="loginEditTextBackground">@color/loginEditTextBackground</item>
-        <item name="loginIconBackground">@color/loginIconBackground</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="EditTextBackground">@drawable/custom_edit_text</item>
+        <item name="EditTextWhiteBackground">@drawable/custom_edit_text_white</item>
+        <item name="toggleVisible">@drawable/custom_toggle_visible</item>
+        <item name="toggleInvisible">@drawable/custom_toggle_invisible</item>
+        <item name="filter">@drawable/custom_filter</item>
+        <item name="search">@drawable/custom_lens</item>
+        <item name="regularD">@drawable/dropdown_regular</item>
+        <item name="expandedD">@drawable/dropdown_expanded</item>
+        <item name="textColor">@color/textColor</item>
+        <item name="hintColor">@color/hintColor</item>
+        <item name="tintColor">@color/colorPrimary</item>
+        <item name="linkColor">@color/colorPrimary</item>
+        <item name="customButton">@drawable/custom_button</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
-    
-    <style name="DarkTheme" parent="Base.AppTheme.Dark"/>
 
-    <style name="Base.AppTheme.Dark" parent="Theme.AppCompat">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="loginEditTextBackground">@color/loginEditTextBackground</item>
-        <item name="loginIconBackground">@color/loginIconBackground</item>
+    <style name="DarkTheme" parent="Base.AppTheme.Dark" />
+
+    <style name="Base.AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="themeName">dark</item>
+        <item name="colorPrimary">@color/colorPrimaryDDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDDarkDark</item>
+        <item name="colorNavigation">@color/colorNavigation</item>
+        <item name="colorAccent">@color/customButtonColorDark</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="customIV">@drawable/custom_image_view_border_dark</item>
+        <item name="PDF">@drawable/dashboard_pdf_dark</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="PDFCardview">@drawable/dashboard_pdf_dark</item>
+        <item name="video">@drawable/dashboard_video</item>
+        <item name="EditTextWhiteBackground">@drawable/custom_edit_text_white_dark</item>
+        <item name="android:textColorSecondary">@color/customButtonColorDark</item>
+        <item name="EditTextBackground">@drawable/custom_edit_text_dark</item>
+        <item name="toggleVisible">@drawable/custom_toggle_visible_dark</item>
+        <item name="toggleInvisible">@drawable/custom_toggle_invisible_dark</item>
+        <item name="filter">@drawable/custom_filter_dark</item>
+        <item name="regularD">@drawable/dropdown_regular_dark</item>
+        <item name="expandedD">@drawable/dropdown_expanded_dark</item>
+        <item name="search">@drawable/custom_lens_dark</item>
+        <item name="textColor">@color/textColorDark</item>
+        <item name="hintColor">@color/hintColorDark</item>
+        <item name="tintColor">@color/customButtonColorDark</item>
+        <item name="linkColor">@color/white</item>
+        <item name="customButton">@drawable/custom_button_dark</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
+
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
 </resources>

@@ -2,10 +2,27 @@
 <resources>
     <color name="colorPrimary">#0d46a0</color>
     <color name="colorPrimaryDark">#002171</color>
-    <color name="colorAccent">#000045</color>
 
-    <color name="loginEditTextBackground">#2e2e2e</color>
+    <color name="colorPrimaryDDark">#BA000000</color>
+    <color name="colorPrimaryDDarkDark">#000000</color>
+
+    <color name="colorNavigation">#1F1D1D</color>
+
+    <color name="colorAccent">#000045</color>
+    <color name="white">#ffffff</color>
+
+    <color name="textColor">#000000</color>
+    <color name="textColorDark">#FFFFFF</color>
+
+    <color name="hintColor">#808080</color>
+    <color name="hintColorDark">#c2c2c2</color>
+
+    <color name="loginEditTextBackground">#e2f0e8</color>
     <color name="loginIconBackground">#98aca1</color>
+
     <color name="loginEditTextBackgroundDark">#2e2e2e</color>
-    <color name="loginIconBackgroundDark">#98ACA1</color>
+
+    <color name="customButtonColor">#0d46a0</color>
+    <color name="customButtonColorDark">#8d2663</color>
+
 </resources>

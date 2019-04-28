@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="loginEditTextBackground" format="reference|color"/>
-    <attr name="loginIconBackground" format="reference|color"/>
+    <attr name="EditTextBackground" format="reference"/>
+    <attr name="EditTextWhiteBackground" format="reference"/>
+    <attr name="loginIconBackground" format="reference"/>
+    <attr name="toggleVisible" format="reference"/>
+    <attr name="toggleInvisible" format="reference"/>
+    <attr name="customIV" format="reference"/>
+    <attr name="PDF" format="reference"/>
+    <attr name="PDFCardview" format="reference"/>
+    <attr name="video" format="reference"/>
+    <attr name="filter" format="reference"/>
+    <attr name="search" format="reference"/>
+    <attr name="expandedD" format="reference"/>
+    <attr name="regularD" format="reference"/>
+    <attr name="themeName" format="string"/>
+    <attr name="textColor" format="reference|color"/>
+    <attr name="colorPrimary" format="reference|color"/>
+    <attr name="colorNavigation" format="reference|color"/>
+    <attr name="hintColor" format="reference|color"/>
+    <attr name="tintColor" format="reference|color"/>
+    <attr name="linkColor" format="reference|color"/>
+    <attr name="customButton" format="reference|color"/>
 </resources>

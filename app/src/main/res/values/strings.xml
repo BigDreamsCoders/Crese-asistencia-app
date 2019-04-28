@@ -2,8 +2,8 @@
     <string name="app_name">Crese Asistencia</string>
     <string name="login_id_hint">\u0020\u0020Username or Email</string>
     <string name="login_password_hint">\u0020Password</string>
-    <string name="name2_text">Seguridad Electrónica</string>
-    <string name="name1_text">CRESE</string>
+    <string name="name2_text" translatable="false">Seguridad Electrónica</string>
+    <string name="name1_text" translatable="false">CRESE</string>
     <string name="login_text">Login</string>
 
 
@@ -13,7 +13,7 @@
     <string name="email_empty">Email empty</string>
     <string name="password_empty">Password empty</string>
     <string name="password_not_match">Password don\'t match</string>
-    <string name="crese_logo_description">CRESE Logo</string>
+    <string name="crese_logo_description" translatable="false">CRESE Logo</string>
     <string name="forgot_your_password_text">Forgot your\npassword?</string>
     <string name="don_t_have_an_account_text">Don\'t have\nan account?</string>
     <string name="keep_session_active_text">Keep session active?</string>
@@ -26,29 +26,58 @@
     <string name="email_valid">Email most be valid</string>
     <string name="password_length">Password must have at least 8 characters</string>
     <string name="server_error">An error happen, try later</string>
-    <string name="social_network_drawer">Social Network</string>
     <string name="notification_drawer">Notification</string>
-    <string name="account_drawer">Account</string>
     <string name="sign_out_drawer">Sign out</string>
     <string name="electronic_materials_text">Electronic Materials</string>
     <string name="dashboard_fragment_name">DashBoard</string>
-    <string name="dashboard_drawer">DashBoard</string>
     <string name="pdf_dashboard_description">PDF dashboard</string>
     <string name="video_dashboard_description">Video dashboard</string>
     <string name="questions_dashboard_description">Questions dashboard</string>
     <string name="what_are_you_searching_hint">What are you searching?</string>
     <string name="documents_found_text">Documents found:</string>
-    <string name="_0_text">0</string>
+    <string name="_0_text" translatable="false">0</string>
     <string name="pdf_image_description">PDF image</string>
-    <string name="cctv_category_name">CCTV</string>
+    <string name="cctv_category_name" translatable="false">CCTV</string>
     <string name="cameras_category_name">Cameras</string>
-    <string name="gps_category_name">GPS</string>
+    <string name="gps_category_name" translatable="false">GPS</string>
     <string name="access_control_category_name">Access Control</string>
     <string name="the_following_items_are_available_text">The following items are available</string>
     <string name="videos_found_text">Videos found</string>
     <string name="download_info">Downloading</string>
-    <string name="share_intent_msg">Checkout this PDF on </string>
+    <string name="share_pdf_intent_msg">Checkout this PDF on </string>
+    <string name="share_video_intent_msg">Checkout this video on </string>
     <string name="logout_msg">Session expired</string>
     <string name="timeout_msg">Timeout, try again later</string>
     <string name="some_err_msg">An error occurred, try again</string>
+    <string name="faq_title" translatable="false">FAQ</string>
+
+    <string name="faq_item_title" translatable="false"> </string>
+    <string name="faq_item_content" translatable="false"> </string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title" translatable="false">Sync email periodically</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="notifications">Notifications</string>
+
+    <string name="setting_drawer">Setting</string>
+    <string name="open">Open menu</string>
+    <string name="close" translatable="false">back</string>
+
+    <string name="spinner_alpha">Alphabetic sort</string>
+    <string name="spinner_date">Date sort</string>
+    <string name="spinner_type">Type sort</string>
+
+    <string name="share">Share</string>
+    <string name="pdf_download">Download</string>
+    <string name="video_watch">Watch</string>
+
+    <string name="manual_categories">Manual categories</string>
+    <string name="video_categories">Video categories</string>
+
+    <string name="camera_title">Camera</string>
+    <string name="ingress_your_email_and_you_will_receive_a_mail_to_recover_your_password_text">Ingress your email and you will receive a mail to recover your password</string>
+    <string name="recover_password">Recover</string>
+    <string name="bad_email">Wrong email</string>
+
 </resources>

@@ -1,5 +1,6 @@
 package com.bigdreamcoders.creseasistencia.utils
 
+import com.bigdreamcoders.creseasistencia.R
 import java.util.regex.Pattern.compile
 
 object Constants {
@@ -49,15 +50,16 @@ object Constants {
     const val SI_TITLE="FRAGMENT_TITLE"
     const val SI_LIST_MANUALS="MANUALS LIST"
     const val SI_LIST_VIDEOS="VIDEOS LIST"
-    const val SI_PDF_LOAD="PDF"
+    const val SI_LIST_FAQ="VIDEOS LIST"
+    const val SI_FILTER="filter"
 
-    const val MANUAL_SPINNER_ALPHA="Alphabetic sort"
-    const val MANUAL_SPINNER_DATE="Date sort"
-    const val MANUAL_SPINNER_TYPE="Type sort"
+    const val MANUAL_SPINNER_ALPHA= R.string.spinner_alpha
+    const val MANUAL_SPINNER_DATE=R.string.spinner_date
+    const val MANUAL_SPINNER_TYPE=R.string.spinner_type
 
-    const val MATERIAL_TYPE_MANUAL="MANUAL"
-    const val MATERIAL_TYPE_VIDEO="VIDEO"
-    const val MATERIAL_TYPE_QUESTION="QUESTIONS"
+    const val MATERIAL_TYPE_MANUAL=R.string.manual_categories
+    const val MATERIAL_TYPE_VIDEO=R.string.video_categories
+    const val MATERIAL_TYPE_QUESTION=R.string.faq_title
 
     const val CATEGORY_CCTV="cctv"
     const val CATEGORY_CAMARAS="cámara wifi"
@@ -66,11 +68,19 @@ object Constants {
 
     const val REQUEST_QUERY_SEARCH="search"
     const val REQUEST_QUERY_CATEGORY="category"
+    const val REQUEST_QUERY_EMAIL="email"
 
     const val MATERIAL_TYPE_KEY="MATERIAL TYPE"
     const val MATERIAL_CATEGORY_KEY="MATERIAL CATEGORY"
 
-    const val PDF_ACTION_SHARE="Share"
-    const val PDF_ACTION_OPEN="Open"
+    const val PDF_ACTION_SHARE=R.string.share
+    const val PDF_ACTION_OPEN=R.string.pdf_download
+
+    const val VIDEO_ACTION_SHARE=R.string.share
+    const val VIDEO_ACTION_OPEN=R.string.video_watch
+
+    const val PREFERENCES_THEME="dark_theme"
+    const val PREFERENCES_NOTIFICATION="notifications"
+    const val TOPIC="AllDevices"
 
 }

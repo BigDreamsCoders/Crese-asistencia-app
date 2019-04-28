@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "387508892441",
+    "firebase_url": "https://crese-asistencia-api.firebaseio.com",
+    "project_id": "crese-asistencia-api",
+    "storage_bucket": "crese-asistencia-api.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387508892441:android:184dc5eff834ea6d",
+        "android_client_info": {
+          "package_name": "com.bigdreamcoders.creseasistencia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387508892441-a6q8avo6eco9sso05csv4vnqlcm0llii.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bigdreamcoders.creseasistencia",
+            "certificate_hash": "7a34c4daa248a0f4dcf09674514d3ae0cf9544c7"
+          }
+        },
+        {
+          "client_id": "387508892441-ad375fchvgv6s1dg700uopiq4q4i0gef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxN8QHB-eXKbdioK4R7-VhBem0DbWcoLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387508892441-ad375fchvgv6s1dg700uopiq4q4i0gef.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

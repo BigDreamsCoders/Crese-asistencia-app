@@ -4,8 +4,8 @@ import android.util.Log
 import com.bigdreamcoders.creseasistencia.R
 import com.bigdreamcoders.creseasistencia.pojos.UserRegister
 import com.bigdreamcoders.creseasistencia.presenters.RegisterPresenter
-import com.bigdreamcoders.creseasistencia.services.NetworkService.RequestService
-import com.bigdreamcoders.creseasistencia.services.NetworkService.models.register.Register
+import com.bigdreamcoders.creseasistencia.services.networkService.RequestService
+import com.bigdreamcoders.creseasistencia.services.networkService.models.register.Register
 import com.bigdreamcoders.creseasistencia.utils.Constants
 import com.bigdreamcoders.creseasistencia.views.views.RegisterView
 import io.reactivex.android.schedulers.AndroidSchedulers

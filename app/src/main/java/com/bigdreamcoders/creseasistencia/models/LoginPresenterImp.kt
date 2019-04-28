@@ -1,10 +1,9 @@
 package com.bigdreamcoders.creseasistencia.models
 
 import android.text.TextUtils
-import android.util.Log
 import com.bigdreamcoders.creseasistencia.presenters.LoginPresenter
-import com.bigdreamcoders.creseasistencia.services.NetworkService.RequestService
-import com.bigdreamcoders.creseasistencia.services.NetworkService.models.login.Login
+import com.bigdreamcoders.creseasistencia.services.networkService.RequestService
+import com.bigdreamcoders.creseasistencia.services.networkService.models.login.Login
 import com.bigdreamcoders.creseasistencia.views.views.LoginView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable

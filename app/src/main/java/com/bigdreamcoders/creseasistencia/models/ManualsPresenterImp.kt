@@ -3,7 +3,7 @@ package com.bigdreamcoders.creseasistencia.models
 import android.util.Log
 import com.bigdreamcoders.creseasistencia.R
 import com.bigdreamcoders.creseasistencia.presenters.ManualsPresenter
-import com.bigdreamcoders.creseasistencia.services.NetworkService.RequestService
+import com.bigdreamcoders.creseasistencia.services.networkService.RequestService
 import com.bigdreamcoders.creseasistencia.views.views.ManualsView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -21,22 +21,24 @@ class ManualsPresenterImp(private val view: ManualsView) : ManualsPresenter {
 
     override fun fetchManuals(token: String, word: String, category: String) {
         view.beginFetch()
+        view.updateItemCount(0)
         disposable = service
             .fetchManuals("Bearer $token", word, category)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                when(it.code()){
-                    200->{
-                        view.updateItemCount(it.body()?.count?:0)
-                        view.updateList(it.body()?.manuals?: ArrayList())
+                Log.d("RESPONSE", it.code().toString())
+                when (it.code()) {
+                    200 -> {
+                        view.updateItemCount(it.body()?.count ?: 0)
+                        view.updateList(it.body()?.manuals ?: ArrayList())
                         view.finishFetch()
                     }
-                    401->{
+                    401 -> {
                         view.finishFetch()
                         view.logout()
                     }
-                    else->{
+                    else -> {
                         view.finishFetch()
                         view.error(R.string.some_err_msg)
                     }

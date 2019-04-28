@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bigdreamcoders.creseasistencia.R
-import com.bigdreamcoders.creseasistencia.services.NetworkService.models.manuals.Manuals
+import com.bigdreamcoders.creseasistencia.services.networkService.models.manuals.Manuals
 import kotlinx.android.synthetic.main.manual_cardview.view.*
 
 class ManualsAdapter(private var list: ArrayList<Manuals> = ArrayList(), private val clickListener: (Manuals) -> Unit) :

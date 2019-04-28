@@ -1,8 +1,9 @@
 package com.bigdreamcoders.creseasistencia.models
 
+import android.util.Log
 import com.bigdreamcoders.creseasistencia.R
 import com.bigdreamcoders.creseasistencia.presenters.VideosPresenter
-import com.bigdreamcoders.creseasistencia.services.NetworkService.RequestService
+import com.bigdreamcoders.creseasistencia.services.networkService.RequestService
 import com.bigdreamcoders.creseasistencia.views.views.VideosView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -20,11 +21,15 @@ class VideosPresenterImp(private val view: VideosView) : VideosPresenter {
 
     override fun fetchVideos(token: String, word: String, category: String) {
         view.beginFetch()
+        view.updateItemCount(0)
         disposable = service
             .fetchVideos("Bearer $token", word, category)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                Log.d("RESPONSE", it.code().toString())
+                Log.d("RESPONSE", word)
+                Log.d("RESPONSE", category)
                 when(it.code()){
                     200->{
                         view.updateItemCount(it.body()?.count ?: 0)

@@ -6,18 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bigdreamcoders.creseasistencia.R
-import com.bigdreamcoders.creseasistencia.services.NetworkService.models.manuals.Manuals
-import com.bigdreamcoders.creseasistencia.services.NetworkService.models.videos.Videos
-import kotlinx.android.synthetic.main.manual_cardview.view.*
+import com.bigdreamcoders.creseasistencia.services.networkService.models.videos.Videos
 import kotlinx.android.synthetic.main.videos_cardview.view.*
 
-class VideosAdapter(private var list: ArrayList<Videos> = ArrayList()) :
+class VideosAdapter(private var list: ArrayList<Videos> = ArrayList(), private val clickListener:(Videos)->Unit) :
     RecyclerView.Adapter<VideosAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.videos_cardview, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, clickListener)
     }
 
     override fun getItemCount(): Int {
@@ -25,19 +23,20 @@ class VideosAdapter(private var list: ArrayList<Videos> = ArrayList()) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("Item", list[position].name)
         holder.bind(list[position])
     }
 
     fun updateList(newList:ArrayList<Videos>){
+        Log.d("LIST", list.size.toString())
         list=newList
         notifyDataSetChanged()
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, val clickListener: (Videos) -> Unit) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: Videos) = with(itemView) {
             tv_video_name_cardview.text = item.name
             tv_videos_type_cardview.text = item.sourceType
+            this.setOnClickListener{clickListener(item)}
         }
     }
 }

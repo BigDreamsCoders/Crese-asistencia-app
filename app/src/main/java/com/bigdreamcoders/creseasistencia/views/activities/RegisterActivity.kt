@@ -7,10 +7,12 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceManager
 import com.bigdreamcoders.creseasistencia.R
 import com.bigdreamcoders.creseasistencia.models.RegisterPresenterImp
 import com.bigdreamcoders.creseasistencia.pojos.UserRegister
 import com.bigdreamcoders.creseasistencia.presenters.RegisterPresenter
+import com.bigdreamcoders.creseasistencia.utils.Constants
 import com.bigdreamcoders.creseasistencia.views.views.RegisterView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_register.*
@@ -21,6 +23,12 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
     private lateinit var registerPresenter: RegisterPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        if(PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(Constants.PREFERENCES_THEME, false)){
+            setTheme(R.style.Base_AppTheme_Dark)
+        }else{
+            setTheme(R.style.AppTheme)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         registerPresenter = RegisterPresenterImp(this)

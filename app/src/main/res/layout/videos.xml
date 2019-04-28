@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_videos"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,7 +10,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="58dp"
-        android:background="@drawable/custom_edit_text"
+        android:background="?EditTextBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,18 +23,17 @@
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:background="@drawable/custom_edit_text_white"
-            android:drawableStart="@drawable/custom_filter"
-            android:drawableLeft="@drawable/custom_filter"
-            android:drawableEnd="@drawable/custom_lens"
-            android:drawableRight="@drawable/custom_lens"
+            android:background="?EditTextWhiteBackground"
+            android:drawableStart="?filter"
+            android:drawableEnd="?search"
             android:hint="@string/what_are_you_searching_hint"
             android:inputType="text"
             android:singleLine="true"
+            android:textColorHint="?hintColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -50,7 +51,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/videos_found_text"
@@ -63,7 +63,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="16dp"
             android:text="@string/_0_text"
             app:layout_constraintStart_toEndOf="@+id/textView5"

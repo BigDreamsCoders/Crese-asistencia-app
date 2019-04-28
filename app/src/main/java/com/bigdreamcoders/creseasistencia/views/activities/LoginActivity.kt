@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.CheckBox
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceManager
 import com.bigdreamcoders.creseasistencia.R
 import com.bigdreamcoders.creseasistencia.models.LoginPresenterImp
 import com.bigdreamcoders.creseasistencia.presenters.LoginPresenter
@@ -20,6 +22,12 @@ class LoginActivity : AppCompatActivity(), LoginView {
     private lateinit var loginPresenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        if(PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(Constants.PREFERENCES_THEME, false)){
+            setTheme(R.style.Base_AppTheme_Dark)
+        }else{
+            setTheme(R.style.AppTheme)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         loginPresenter = LoginPresenterImp(this)
