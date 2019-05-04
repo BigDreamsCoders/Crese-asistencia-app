@@ -6,6 +6,7 @@
     <attr name="toggleVisible" format="reference"/>
     <attr name="toggleInvisible" format="reference"/>
     <attr name="customIV" format="reference"/>
+    <attr name="customIVGood" format="reference"/>
     <attr name="PDF" format="reference"/>
     <attr name="PDFCardview" format="reference"/>
     <attr name="video" format="reference"/>

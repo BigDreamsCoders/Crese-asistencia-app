@@ -76,7 +76,7 @@
         app:layout_constraintHorizontal_bias="0.027"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_id_login_activity"
-        tools:ignore="Autofill" />
+        android:autofillHints="@string/login_password_hint" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_login_options_login_activity"

@@ -53,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@id/textView2"
         tools:ignore="Autofill" />
 
-    <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
+    <EditText
         android:id="@+id/et_password_login_activity"
         android:layout_width="284dp"
         android:layout_height="48dp"
@@ -72,8 +72,6 @@
         android:textColorHint="?hintColor"
         android:textCursorDrawable="@null"
         android:textSize="18sp"
-        app:drawable_hide="?toggleInvisible"
-        app:drawable_show="?toggleVisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_id_login_activity"

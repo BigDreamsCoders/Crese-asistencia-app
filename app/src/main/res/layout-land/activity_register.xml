@@ -68,7 +68,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="296dp" />
 
-    <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
+    <EditText
         android:id="@+id/et_password_register_activity"
         android:layout_width="255dp"
         android:layout_height="wrap_content"
@@ -79,19 +79,17 @@
         android:layout_marginRight="8dp"
         android:background="?attr/EditTextBackground"
         android:drawableStart="@drawable/custom_icon_rec_pass"
-        android:drawableLeft="@drawable/custom_icon_rec_pass"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="@string/login_password_hint"
         android:inputType="textPassword"
         android:textColorHint="?hintColor"
-        app:drawable_hide="@drawable/custom_toggle_invisible"
-        app:drawable_show="@drawable/custom_toggle_visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/tv_register_text_register_activity" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_register_text_register_activity"
+        tools:ignore="Autofill" />
 
-    <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
+    <EditText
         android:id="@+id/et_password_repeat_register_activity"
         android:layout_width="255dp"
         android:layout_height="wrap_content"
@@ -102,17 +100,15 @@
         android:layout_marginRight="8dp"
         android:background="?attr/EditTextBackground"
         android:drawableStart="@drawable/custom_icon_rec_pass"
-        android:drawableLeft="@drawable/custom_icon_rec_pass"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="@string/repeat_password_hint"
         android:inputType="textPassword"
         android:textColorHint="?hintColor"
-        app:drawable_hide="@drawable/custom_toggle_invisible"
-        app:drawable_show="@drawable/custom_toggle_visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_register_activity" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password_register_activity"
+        tools:ignore="Autofill" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_register_action_register_activity"

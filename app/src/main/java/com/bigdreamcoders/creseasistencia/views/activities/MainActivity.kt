@@ -4,18 +4,16 @@ import android.app.DownloadManager
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.os.PersistableBundle
-import android.util.Log
 import android.util.TypedValue
 import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -39,7 +37,7 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
     VideosFragment.InnerFunctions, FaqFragment.InnerFunctions {
 
     private var title: ArrayList<String> = ArrayList()
-    private var shouldOpenMenu=true
+    private var shouldOpenMenu = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (PreferenceManager.getDefaultSharedPreferences(this)
@@ -65,10 +63,11 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
-        val restoredTitle = savedInstanceState?.getStringArrayList(Constants.SI_TITLE) ?: ArrayList()
+        val restoredTitle =
+            savedInstanceState?.getStringArrayList(Constants.SI_TITLE) ?: ArrayList()
         title = restoredTitle
         changeToolbarTitle()
-        showBackButton(supportFragmentManager.backStackEntryCount>0)
+        showBackButton(supportFragmentManager.backStackEntryCount > 0)
     }
 
     private fun init() {
@@ -94,7 +93,7 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
     private fun firstEntry() {
         title.add(resources.getString(R.string.dashboard_fragment_name))
         supportActionBar?.apply {
-            title=this@MainActivity.title.last()
+            title = this@MainActivity.title.last()
             setHomeAsUpIndicator(R.drawable.ic_dehaze)
         }
         supportFragmentManager
@@ -113,12 +112,12 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
         finish()
     }
 
-    private fun showBackButton(enable: Boolean){
-        shouldOpenMenu = if(enable){
+    private fun showBackButton(enable: Boolean) {
+        shouldOpenMenu = if (enable) {
             dl_main_activity.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             supportActionBar?.setHomeAsUpIndicator(null)
             false
-        }else{
+        } else {
             dl_main_activity.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_dehaze)
             true
@@ -126,7 +125,7 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
     }
 
     private fun changeToolbarTitle() {
-        supportActionBar?.title= this@MainActivity.title.last()
+        supportActionBar?.title = this@MainActivity.title.last()
     }
 
     override fun setSlideViews(): ArrayList<DefaultSliderView> {
@@ -134,9 +133,9 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
         for (i in 0..2) {
             val slider = DefaultSliderView(this@MainActivity)
             when (i) {
-                0 -> slider.setImageDrawable( R.drawable.ad1)
-                1 -> slider.setImageDrawable( R.drawable.ad2)
-                2 -> slider.setImageDrawable( R.drawable.ad3)
+                0 -> slider.setImageDrawable(R.drawable.ad1)
+                1 -> slider.setImageDrawable(R.drawable.ad2)
+                2 -> slider.setImageDrawable(R.drawable.ad3)
             }
             slider.setImageScaleType(ImageView.ScaleType.CENTER_INSIDE)
             array.add(slider)
@@ -158,10 +157,10 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             android.R.id.home -> {
-                if(shouldOpenMenu){
+                if (shouldOpenMenu) {
                     dl_main_activity.openDrawer(GravityCompat.START)
                     return true
-                }else{
+                } else {
                     onBackPressed()
                 }
             }
@@ -171,9 +170,9 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
 
     override fun onBackPressed() {
         super.onBackPressed()
-        title.removeAt(title.size-1)
+        title.removeAt(title.size - 1)
         changeToolbarTitle()
-        if(supportFragmentManager.backStackEntryCount==0){
+        if (supportFragmentManager.backStackEntryCount == 0) {
             showBackButton(false)
         }
     }
@@ -262,20 +261,8 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
                             R.drawable.dropdown_expanded
                         }
                     )
-                    .setTitleTextColorRes(
-                        if (bool) {
-                            R.color.textColorDark
-                        } else {
-                            R.color.textColor
-                        }
-                    )
-                    .setContentTextColorRes(
-                        if (bool) {
-                            R.color.textColorDark
-                        } else {
-                            R.color.textColor
-                        }
-                    )
+                    .setTitleTextColorRes(R.color.textColorDark)
+                    .setContentTextColorRes(R.color.textColorDark)
                     .setPanelPaddingRes(R.dimen.panel_default_padding)
                     .setContentPaddingRes(R.dimen.content_default_padding)
                     .setExpandDuration(1)

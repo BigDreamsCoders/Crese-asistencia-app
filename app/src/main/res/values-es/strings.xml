@@ -59,4 +59,5 @@
     <string name="recover_password">Recuperar</string>
     <string name="bad_email">Correo erroneo</string>
     <string name="password_sucessful">Revisa tu correo para instrucciones adicionales</string>
+    <string name="frequently_asked_questions_to_us_text">Preguntas frecuentes hechas a nosotros</string>
 </resources>

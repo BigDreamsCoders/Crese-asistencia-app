@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView2" />
 
-    <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
+    <EditText
         android:id="@+id/et_password_login_activity"
         android:layout_width="284dp"
         android:layout_height="48dp"
@@ -61,7 +61,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:autofillHints="@string/login_password_hint"
         android:background="?attr/EditTextBackground"
         android:drawableStart="@drawable/custom_icon_rec_pass"
         android:ems="10"
@@ -70,12 +69,12 @@
         android:inputType="textPassword"
         android:singleLine="true"
         android:textColorHint="?hintColor"
+        android:textCursorDrawable="@null"
         android:textSize="18sp"
-        app:drawable_hide="@drawable/custom_toggle_invisible"
-        app:drawable_show="@drawable/custom_toggle_visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_id_login_activity" />
+        app:layout_constraintTop_toBottomOf="@+id/et_id_login_activity"
+        android:autofillHints="@string/login_password_hint" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_login_options_login_activity"

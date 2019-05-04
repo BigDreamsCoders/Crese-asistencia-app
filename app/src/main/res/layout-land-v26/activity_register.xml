@@ -59,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_username_register_activity" />
 
-    <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
+    <EditText
         android:id="@+id/et_password_register_activity"
         android:layout_width="255dp"
         android:layout_height="wrap_content"
@@ -76,13 +76,11 @@
         android:hint="@string/login_password_hint"
         android:inputType="textPassword"
         android:textColorHint="?hintColor"
-        app:drawable_hide="@drawable/custom_toggle_invisible"
-        app:drawable_show="@drawable/custom_toggle_visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/tv_register_text_register_activity" />
 
-    <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
+    <EditText
         android:id="@+id/et_password_repeat_register_activity"
         android:layout_width="255dp"
         android:layout_height="wrap_content"
@@ -99,8 +97,6 @@
         android:hint="@string/repeat_password_hint"
         android:inputType="textPassword"
         android:textColorHint="?hintColor"
-        app:drawable_hide="@drawable/custom_toggle_invisible"
-        app:drawable_show="@drawable/custom_toggle_visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/et_password_register_activity" />

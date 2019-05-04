@@ -2,6 +2,7 @@ package com.bigdreamcoders.creseasistencia.views.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,21 +39,22 @@ class FaqFragment : Fragment(), FaqView {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.faq, container, false)
-        if (savedInstanceState == null)
-            bind(view)
-        else
-            innerFunctions?.createView(list)
+        if (savedInstanceState != null) with(savedInstanceState){
+            this@FaqFragment.deleteAllChild()
+            list=getParcelableArrayList(Constants.SI_LIST_FAQ)?: ArrayList()
+            innerFunctions?.createView(list)?.forEach {
+                view?.ll_faq?.addView(it)
+            }
+        }
+        else{
+            bind()
+        }
         return view
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putParcelableArrayList(Constants.SI_LIST_FAQ, list)
-    }
-
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-        list = savedInstanceState?.getParcelableArrayList(Constants.SI_LIST_FAQ) ?: ArrayList()
     }
 
     override fun inflateView(list: ArrayList<Faq>) {
@@ -66,7 +68,7 @@ class FaqFragment : Fragment(), FaqView {
         view?.ll_faq?.removeAllViews()
     }
 
-    private fun bind(view: View) {
+    private fun bind() {
         imp.fetchFAQ(innerFunctions?.getToken() ?: "")
     }
 
