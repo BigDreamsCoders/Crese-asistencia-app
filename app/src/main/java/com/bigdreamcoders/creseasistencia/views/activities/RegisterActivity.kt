@@ -3,6 +3,7 @@ package com.bigdreamcoders.creseasistencia.views.activities
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -15,6 +16,7 @@ import com.bigdreamcoders.creseasistencia.presenters.RegisterPresenter
 import com.bigdreamcoders.creseasistencia.utils.Constants
 import com.bigdreamcoders.creseasistencia.views.views.RegisterView
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_forgot_password.*
 import kotlinx.android.synthetic.main.activity_register.*
 import spencerstudios.com.bungeelib.Bungee
 
@@ -36,6 +38,11 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
     }
 
     private fun bindViews() {
+        setSupportActionBar(toolbarRegister)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(null)
+        }
         tv_login_register_activity.setOnClickListener {
             startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
             Bungee.slideRight(this)
@@ -50,6 +57,15 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
                 )
             )
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+            }
+        }
+        return true
     }
 
     override fun registerSuccess() {
