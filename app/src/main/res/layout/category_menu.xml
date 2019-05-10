@@ -16,8 +16,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_category_cctva"
-            android:layout_width="118dp"
-            android:layout_height="105dp"
+            android:layout_width="150dp"
+            android:layout_height="136dp"
             android:background="?customIVGood"
             app:layout_constraintBottom_toTopOf="@+id/cl_category_gps"
             app:layout_constraintEnd_toStartOf="@+id/cl_category_cameras"
@@ -47,8 +47,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_category_access_control"
-            android:layout_width="118dp"
-            android:layout_height="105dp"
+            android:layout_width="150dp"
+            android:layout_height="136dp"
             android:background="?customIVGood"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,8 +78,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_category_gps"
-            android:layout_width="118dp"
-            android:layout_height="105dp"
+            android:layout_width="150dp"
+            android:layout_height="136dp"
             android:background="?customIVGood"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cl_category_access_control"
@@ -109,8 +109,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_category_cameras"
-            android:layout_width="118dp"
-            android:layout_height="105dp"
+            android:layout_width="150dp"
+            android:layout_height="136dp"
             android:background="?customIVGood"
             app:layout_constraintBottom_toTopOf="@+id/cl_category_access_control"
             app:layout_constraintEnd_toEndOf="parent"

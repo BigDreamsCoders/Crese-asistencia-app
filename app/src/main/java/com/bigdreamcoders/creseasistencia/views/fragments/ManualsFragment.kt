@@ -122,7 +122,7 @@ class ManualsFragment : Fragment(), ManualsView {
         fun logout()
         fun error(msg: Int)
         fun hideKeyboard()
-        fun downloadPDF(manual: Manuals)
+        fun checkPermission(manual:Manuals)
     }
 
     override fun updateList(list: ArrayList<Manuals>) {
@@ -181,7 +181,7 @@ class ManualsFragment : Fragment(), ManualsView {
                 when (witch) {
                     0 -> pdfIntent(manual)
                     else -> {
-                        innerFunctions?.downloadPDF(manual)
+                        innerFunctions?.checkPermission(manual)
                     }
                 }
                 dialog.dismiss()

@@ -9,13 +9,15 @@
 
     <TextView
         android:id="@+id/tv_register_text_register_activity"
-        android:layout_width="91dp"
+        android:layout_width="wrap_content"
         android:layout_height="43dp"
         android:layout_marginTop="44dp"
         android:gravity="center"
         android:text="@string/register_text"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_username_register_activity"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,8 +34,9 @@
         android:hint="@string/username_hint"
         android:inputType="text"
         android:textColorHint="?hintColor"
+        app:layout_constraintBottom_toTopOf="@+id/et_email_register_activity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_register_text_register_activity" />
 
@@ -50,7 +53,9 @@
         android:hint="@string/email_hint"
         android:inputType="textEmailAddress"
         android:textColorHint="?hintColor"
+        app:layout_constraintBottom_toTopOf="@+id/et_password_register_activity"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_username_register_activity" />
 
@@ -66,7 +71,9 @@
         android:hint="@string/login_password_hint"
         android:inputType="textPassword"
         android:textColorHint="?hintColor"
+        app:layout_constraintBottom_toTopOf="@+id/et_password_repeat_register_activity"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_email_register_activity"
         tools:ignore="Autofill" />
@@ -83,7 +90,9 @@
         android:hint="@string/repeat_password_hint"
         android:inputType="textPassword"
         android:textColorHint="?hintColor"
+        app:layout_constraintBottom_toTopOf="@+id/cl_register_action_register_activity"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password_register_activity"
         tools:ignore="Autofill" />
@@ -93,9 +102,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_repeat_register_activity">
+        app:layout_constraintTop_toBottomOf="@+id/pb_register_activity">
 
         <Button
             android:id="@+id/btn_register_register_activity"
@@ -134,7 +145,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_repeat_register_activity" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

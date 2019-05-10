@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Crese Asistencia</string>
+    <string name="app_name">Crese</string>
     <string name="login_id_hint">\u0020\u0020Username or Email</string>
     <string name="login_password_hint">\u0020Password</string>
     <string name="name2_text" translatable="false">Seguridad Electrónica</string>
-    <string name="name1_text" translatable="false">CRESE</string>
+    <string name="name1_text" translatable="false">Crese</string>
     <string name="login_text">Login</string>
 
 
@@ -13,7 +13,7 @@
     <string name="email_empty">Email empty</string>
     <string name="password_empty">Password empty</string>
     <string name="password_not_match">Password don\'t match</string>
-    <string name="crese_logo_description" translatable="false">CRESE Logo</string>
+    <string name="crese_logo_description" translatable="false">Crese Logo</string>
     <string name="forgot_your_password_text">Forgot your\npassword?</string>
     <string name="don_t_have_an_account_text">Don\'t have\nan account?</string>
     <string name="keep_session_active_text">Keep session active?</string>
@@ -81,5 +81,14 @@
     <string name="bad_email">Wrong email</string>
     <string name="password_sucessful">Check your email for further instructions</string>
     <string name="frequently_asked_questions_to_us_text">Frequently asked questions to us</string>
+    <string name="budget_text">Requisition</string>
+    <string name="video_text">Video</string>
+    <string name="manuals_text">Manuals</string>
+    <string name="full_name_hint">Full name</string>
+    <string name="question_text">Your question</string>
+    <string name="send_text">Send</string>
+
+    <string name="requisition">"Requisition made. A member of our team while contact you later</string>
+    <string name="some_empty">Some field is empty</string>
 
 </resources>

@@ -4,30 +4,28 @@ import android.app.DownloadManager
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.graphics.Matrix
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.util.TypedValue
 import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.bigdreamcoders.creseasistencia.R
-import com.bigdreamcoders.creseasistencia.services.networkService.models.faq.Faq
 import com.bigdreamcoders.creseasistencia.services.networkService.models.manuals.Manuals
 import com.bigdreamcoders.creseasistencia.utils.Constants
 import com.bigdreamcoders.creseasistencia.views.fragments.*
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.messaging.FirebaseMessaging
 import com.smarteist.autoimageslider.DefaultSliderView
-import hakobastvatsatryan.DropdownTextView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_content.*
 import spencerstudios.com.bungeelib.Bungee
@@ -38,6 +36,7 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
 
     private var title: ArrayList<String> = ArrayList()
     private var shouldOpenMenu = true
+    private lateinit var manuals: Manuals
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (PreferenceManager.getDefaultSharedPreferences(this)
@@ -73,9 +72,28 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
     private fun init() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         showBackButton(false)
         nv_main_activity.setNavigationItemSelectedListener {
             when (it.itemId) {
+                R.id.dw_manuals -> {
+                    this.changeFragment(
+                        CategoryFragment.newInstance(resources.getString(Constants.MATERIAL_TYPE_MANUAL)),
+                        resources.getString(Constants.MATERIAL_TYPE_MANUAL)
+                    )
+                }
+                R.id.dw_videos -> {
+                    this.changeFragment(
+                        CategoryFragment.newInstance(resources.getString(Constants.MATERIAL_TYPE_VIDEO)),
+                        resources.getString(Constants.MATERIAL_TYPE_VIDEO)
+                    )
+                }
+                R.id.dw_quotation -> {
+                    this.changeFragment(
+                        CategoryFragment.newInstance(resources.getString(Constants.MATERIAL_TYPE_QUESTION)),
+                        resources.getString(Constants.MATERIAL_TYPE_QUESTION)
+                    )
+                }
                 R.id.session_drawer -> {
                     clearSession()
                 }
@@ -130,14 +148,18 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
 
     override fun setSlideViews(): ArrayList<DefaultSliderView> {
         val array = ArrayList<DefaultSliderView>()
-        for (i in 0..2) {
+        for (i in 0..6) {
             val slider = DefaultSliderView(this@MainActivity)
             when (i) {
-                0 -> slider.setImageDrawable(R.drawable.ad1)
-                1 -> slider.setImageDrawable(R.drawable.ad2)
-                2 -> slider.setImageDrawable(R.drawable.ad3)
+                0 -> slider.setImageDrawable(R.drawable.ad4)
+                1 -> slider.setImageDrawable(R.drawable.ad9)
+                2 -> slider.setImageDrawable(R.drawable.ad10)
+                3 -> slider.setImageDrawable(R.drawable.ad5)
+                4 -> slider.setImageDrawable(R.drawable.ad8)
+                5 -> slider.setImageDrawable(R.drawable.ad7)
+                6 -> slider.setImageDrawable(R.drawable.ad6)
             }
-            slider.setImageScaleType(ImageView.ScaleType.CENTER_INSIDE)
+            slider.setImageScaleType(ImageView.ScaleType.FIT_XY)
             array.add(slider)
         }
         return array
@@ -184,7 +206,7 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
         ).getString(Constants.SP_TOKEN, "") ?: ""
     }
 
-    override fun downloadPDF(manual: Manuals) {
+    private fun downloadPDF(manual: Manuals) {
         val fileName = "${manual.name}.pdf"
         val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         val r = DownloadManager.Request(Uri.parse(manual.URL)).apply {
@@ -199,6 +221,47 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
             resources.getString(R.string.download_info),
             Snackbar.LENGTH_LONG
         ).show()
+    }
+
+    override fun checkPermission(manual: Manuals) {
+        val permission = ContextCompat.checkSelfPermission(
+            this,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            makePermissionRequest()
+            this@MainActivity.manuals = manual
+        } else {
+            downloadPDF(manual)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            101 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    this.downloadPDF(manuals)
+                } else {
+                    Snackbar.make(
+                        dl_main_activity,
+                        "Danos permiso gandalla",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
+    }
+
+    private fun makePermissionRequest() {
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+            101
+        )
     }
 
     override fun logout() {
@@ -230,50 +293,6 @@ class MainActivity : AppCompatActivity(), DashBoardFragment.InnerDashBoardFun,
                 .hideSoftInputFromWindow(currentFocus?.windowToken, 0)
         } catch (e: Exception) {
 
-        }
-    }
-
-    override fun createView(list: ArrayList<Faq>): MutableList<LinearLayout> {
-        return MutableList(list.size) {
-            run {
-                val value = TypedValue()
-                theme.resolveAttribute(R.attr.themeName, value, true)
-                val bool = "dark" == value.string
-                val linearLayout = LinearLayout(this@MainActivity)
-                val params = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
-                )
-                params.setMargins(10, 5, 10, 5)
-                val item = DropdownTextView.Builder(this@MainActivity)
-                    .setTitleTextRes(R.string.faq_item_title)
-                    .setContentTextRes(R.string.faq_item_content)
-                    .setRegularBackgroundDrawableRes(
-                        if (bool) {
-                            R.drawable.dropdown_regular_dark
-                        } else {
-                            R.drawable.dropdown_regular
-                        }
-                    )
-                    .setExpandedBackgroundDrawableRes(
-                        if (bool) {
-                            R.drawable.dropdown_expanded_dark
-                        } else {
-                            R.drawable.dropdown_expanded
-                        }
-                    )
-                    .setTitleTextColorRes(R.color.textColorDark)
-                    .setContentTextColorRes(R.color.textColorDark)
-                    .setPanelPaddingRes(R.dimen.panel_default_padding)
-                    .setContentPaddingRes(R.dimen.content_default_padding)
-                    .setExpandDuration(1)
-                    .build()
-                item.apply {
-                    setTitleText(list[it].question)
-                    setContentText(list[it].answer)
-                }
-                linearLayout.addView(item, params)
-                return@run linearLayout
-            }
         }
     }
 

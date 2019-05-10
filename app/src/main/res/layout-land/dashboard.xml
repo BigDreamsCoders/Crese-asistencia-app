@@ -21,52 +21,101 @@
         android:layout_height="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:baselineAligned="false">
 
-        <ImageView
+        <RelativeLayout
             android:id="@+id/iv_pdf_dashboard"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="?customIV"
-            android:contentDescription="@string/pdf_dashboard_description"
             android:padding="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/iv_video_dashboard"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="?PDF" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+            <ImageView
+                android:id="@+id/iv_pdf"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:contentDescription="@string/pdf_dashboard_description"
+                android:padding="10dp"
+                app:srcCompat="?PDF" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_pdf"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:text="@string/manuals_text"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
             android:id="@+id/iv_video_dashboard"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="?customIV"
-            android:contentDescription="@string/video_dashboard_description"
             android:padding="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/iv_questions_dashboard"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/iv_pdf_dashboard"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/dashboard_video" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+            <ImageView
+                android:id="@+id/iv_video"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:contentDescription="@string/video_dashboard_description"
+                android:padding="10dp"
+                app:srcCompat="@drawable/dashboard_video" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_video"
+                android:text="@string/video_text"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/iv_questions_dashboard"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="?customIV"
-            android:contentDescription="@string/questions_dashboard_description"
-            android:padding="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/iv_video_dashboard"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/dashboard_question" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_questions"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:contentDescription="@string/questions_dashboard_description"
+                android:padding="10dp"
+                app:srcCompat="@drawable/money_bag" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_questions"
+                android:text="@string/budget_text"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

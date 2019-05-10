@@ -2,7 +2,9 @@ package com.bigdreamcoders.creseasistencia.views.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.core.view.GravityCompat
 import androidx.preference.PreferenceManager
 import com.bigdreamcoders.creseasistencia.R
 import com.bigdreamcoders.creseasistencia.models.ForgotPasswordPresenterImp
@@ -10,6 +12,7 @@ import com.bigdreamcoders.creseasistencia.utils.Constants
 import com.bigdreamcoders.creseasistencia.views.views.ForgotPasswordView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_forgot_password.*
+import kotlinx.android.synthetic.main.activity_main.*
 import spencerstudios.com.bungeelib.Bungee
 
 class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
@@ -33,6 +36,20 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
         btn_forgot_activity.setOnClickListener {
             presenter.requestRecovery(et_email_forgot_activity.text.toString().trim())
         }
+        setSupportActionBar(toolbarFP)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(null)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+            }
+        }
+        return true
     }
 
     override fun onBackPressed() {

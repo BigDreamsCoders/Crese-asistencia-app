@@ -1,6 +1,7 @@
 package com.bigdreamcoders.creseasistencia.services.networkService
 
 import com.bigdreamcoders.creseasistencia.services.networkService.models.LoginAdapter
+import com.bigdreamcoders.creseasistencia.services.networkService.models.faq.FaqBody
 import com.bigdreamcoders.creseasistencia.services.networkService.models.faq.FaqResponse
 import com.bigdreamcoders.creseasistencia.services.networkService.models.forgot.ForgotResponse
 import com.bigdreamcoders.creseasistencia.services.networkService.models.login.Login
@@ -42,9 +43,10 @@ interface RequestService {
         @Query(Constants.REQUEST_QUERY_CATEGORY) category: String
     ): Observable<Response<VideosResponse>>
 
-    @GET("faq")
+    @POST("requisition")
     fun fetchFaq(
-        @Header("Authorization") auth:String
+        @Header("Authorization") auth:String,
+        @Body faq:FaqBody
     ):Observable<Response<FaqResponse>>
 
     companion object {

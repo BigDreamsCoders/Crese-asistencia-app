@@ -26,7 +26,6 @@
         <item name="tintColor">@color/colorPrimary</item>
         <item name="linkColor">@color/colorPrimary</item>
         <item name="customButton">@drawable/custom_button</item>
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
     <style name="DarkTheme" parent="Base.AppTheme.Dark" />
@@ -56,12 +55,6 @@
         <item name="tintColor">@color/customButtonColorDark</item>
         <item name="linkColor">@color/white</item>
         <item name="customButton">@drawable/custom_button_dark</item>
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
-    </style>
-
-    <style name="WindowAnimationTransition">
-        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
-        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
 </resources>

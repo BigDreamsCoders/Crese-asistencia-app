@@ -2,6 +2,6 @@ package com.bigdreamcoders.creseasistencia.presenters
 
 interface FaqPresenter {
 
-    fun fetchFAQ(auth:String)
+    fun sendEmail(auth:String, email:String, name:String, content:String)
 
 }

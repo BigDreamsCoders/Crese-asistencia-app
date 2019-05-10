@@ -69,6 +69,8 @@ object Constants {
     const val REQUEST_QUERY_SEARCH="search"
     const val REQUEST_QUERY_CATEGORY="category"
     const val REQUEST_QUERY_EMAIL="email"
+    const val REQUEST_QUERY_NAME="name"
+    const val REQUEST_QUERY_CONTENT="content"
 
     const val MATERIAL_TYPE_KEY="MATERIAL TYPE"
     const val MATERIAL_CATEGORY_KEY="MATERIAL CATEGORY"

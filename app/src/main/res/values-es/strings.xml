@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Crese Asistencia</string>
+    <string name="app_name">Crese</string>
     <string name="access_control_category_name">Control de Acceso</string>
     <string name="dark_theme">Tema Oscuro</string>
     <string name="dashboard_fragment_name">Tablero</string>
@@ -29,7 +29,7 @@
     <string name="pdf_download">Descargar</string>
     <string name="pdf_image_description">Imagen PDF</string>
     <string name="questions_dashboard_description">"Tablero de preguntas "</string>
-    <string name="register_text">Registrar</string>
+    <string name="register_text">Registrarse</string>
     <string name="repeat_password_hint">\u0020Repetir contraseña</string>
     <string name="server_error">Un error ocurrió, intente luego</string>
     <string name="setting_drawer">Ajustes</string>
@@ -60,4 +60,12 @@
     <string name="bad_email">Correo erroneo</string>
     <string name="password_sucessful">Revisa tu correo para instrucciones adicionales</string>
     <string name="frequently_asked_questions_to_us_text">Preguntas frecuentes hechas a nosotros</string>
+    <string name="budget_text">Cotización</string>
+    <string name="manuals_text">Manuales</string>
+    <string name="video_text">Videos</string>
+    <string name="full_name_hint">Nombre completo</string>
+    <string name="question_text">Su pregunta</string>
+    <string name="send_text">Enviar</string>
+    <string name="requisition">Solicitud hecha, un miembro de nuestro equipo se contactará luego.</string>
+    <string name="some_empty">Algún campo está vacío</string>
 </resources>
